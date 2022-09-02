@@ -26,7 +26,7 @@ app.post('/auth', function(req, res){
 
     for (let i=0; i<users.length; i++){
         if (req.body.email == users[i].email && req.body.password == users[i].password){
-            // return values to front end
+            user.valid = true;
         }
-    }
+    }   res.send(user);
 });

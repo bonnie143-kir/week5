@@ -25,10 +25,6 @@ app.post('/auth', function(req, res){
     for (let i=0; i<users.length; i++){
         if (req.body.email == users[i].email && req.body.password == users[i].password){
             user.valid = true;
-            sessionStorage.setItem('username', users[i].username);
-            sessionStorage.setItem('email', users[i].email);
-            sessionStorage.setItem('birthdate', users[i].birthdate);
-            sessionStorage.setItem('age', users[i].age);
         }
     }   res.send(user.valid);
 });

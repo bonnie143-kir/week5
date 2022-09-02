@@ -11,7 +11,7 @@ import { LoginComponent } from '../login/login.component';
 })
 export class ProfileComponent implements OnInit {
   
-  age = "";
+  age = 0;
   email = "";
   password = "";
   username = "";
@@ -42,9 +42,9 @@ export class ProfileComponent implements OnInit {
     sessionStorage.setItem('username', this.username);
     sessionStorage.setItem('email', this.email);
     sessionStorage.setItem('birthdate', this.birthdate);
-    sessionStorage.setItem('age', this.age);
+   // sessionStorage.setItem('age', this.age);
 
-    return userObj;
+    //return userObj;
   }
 
   done(){
@@ -53,9 +53,9 @@ export class ProfileComponent implements OnInit {
       {'user': sessionStorage.getItem(this.username)},
       {'email': sessionStorage.getItem(this.email)},
       {'birthdate': sessionStorage.getItem(this.birthdate)},
-      //{'age': sessionStorage.getItem(this.age)}
+      // {'age': sessionStorage.getItem(this.age)}
     ]
-    return userObj;
+    //return userObj;
   }
 
   logOut(){

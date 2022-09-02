@@ -33,7 +33,6 @@ app.post('/auth', function(req, res){
             res.send(user);
         }else {
             res.send(incorrect);
-            res.status(404).send('Sorry, incorrect credentials');
         }
     }   
 });

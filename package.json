@@ -1,0 +1,26 @@
+{
+  "name": "week5",
+  "version": "1.0.0",
+  "description": "week5 server and front en",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bonnie143-kir/week5.git"
+  },
+  "keywords": [
+    "angular",
+    "node.js"
+  ],
+  "author": "bongraoi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bonnie143-kir/week5/issues"
+  },
+  "homepage": "https://github.com/bonnie143-kir/week5#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}

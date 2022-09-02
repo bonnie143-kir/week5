@@ -2,9 +2,11 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 app.use(express.urlencoded({extended:true}));
-app.use(express.json())
+app.use(express.json());
+const cors = require('cors');
+app.use(cors());
 
-app.use(express.static(__dirname + '/directory'));
+app.use(express.static(__dirname + '/dist/frontend'));
 
 app.listen(3000, ()=>{
     var d = new Date();

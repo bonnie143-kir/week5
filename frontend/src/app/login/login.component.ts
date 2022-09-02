@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { response } from 'express';
 import { HttpService } from '../http.service';
+import { ActivatedRoute } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 const URL = 'http://localhost:3000';
 
@@ -12,15 +14,16 @@ const URL = 'http://localhost:3000';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
   email = ""
   password = ""
   user = {'email': this.email, 'password': this.password};
     
 
-  constructor(private http: HttpClient, private router: Router, private httpService: HttpService) { }
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router, private httpService: HttpService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
   loginChck(){
@@ -32,11 +35,12 @@ export class LoginComponent implements OnInit {
     })
     .subscribe(data=> {
       console.log(data);
-      if (data == true){ // chk this again
-        this.router.navigateByUrl('/account');
-      }else{
-        alert("invalid login");
-      }
+      this.router.navigateByUrl('/account');
+      // if (data == true){ // chk this again
+      //   this.router.navigateByUrl('/account');
+      // }else{
+      //   alert("invalid login");
+      // }
     });
   }
 

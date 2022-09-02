@@ -1,1 +1,43 @@
-<p>profile works!</p>
+<div *ngIf="isLoggedIn">
+    <h1> This is your profile</h1>
+    {{email}}
+    {{birthdate}}
+    {{age}}
+
+    <button (click)="edit()">Edit Details</button>
+    <div *ngIf="isEdit">
+        <h2>Edit your details here:</h2>
+
+        <form>
+            <div class="form-outline mb-4">
+                <input type="email" [(ngModel)]="email" name="email">
+                <label class="form-label" for="email">Email</label>
+            </div>
+      
+            <div class="form-outline mb-4">
+                <input type="password" [(ngModel)]="password" name="password">
+                <label class="form-label" for="password">Password</label>
+            </div>
+    
+            <div class="form-outline mb-4">
+                <input type="date" [(ngModel)]="birthdate" name="birthdate">
+                <label class="form-label" for="birthdate">Birthdate</label>
+            </div>
+      
+            <div class="form-outline mb-4">
+                <input type="age" [(ngModel)]="age" name="age">
+                <label class="form-label" for="age">Age</label>
+            </div>
+    
+            <div class="form-outline mb-4">
+                <input type="username" [(ngModel)]="username" name="username">
+                <label class="form-label" for="username">Username</label>
+            </div>  
+        
+            <button (click)="done()">Done</button>
+        </form>
+    </div>
+</div>
+
+
+<button (click)="logOut()">Log out</button>

@@ -25,10 +25,15 @@ app.post('/auth', function(req, res){
     var user = {};
     user.email = req.body.email;
     user.password = req.body.password;
+    var incorrect = 1;
 
     for (let i=0; i<users.length; i++){
         if (req.body.email == users[i].email && req.body.password == users[i].password){
             user.valid = true;
+            res.send(user);
+        }else {
+            res.send(incorrect);
+            res.status(404).send('Sorry, incorrect credentials');
         }
-    }   res.send(user);
+    }   
 });

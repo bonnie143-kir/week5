@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bonnie143-kir/week5.git"
+  },
+  "keywords": [
+    "server"
+  ],
+  "author": "bongraoi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bonnie143-kir/week5/issues"
+  },
+  "homepage": "https://github.com/bonnie143-kir/week5#readme"
+}

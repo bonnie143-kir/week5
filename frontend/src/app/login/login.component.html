@@ -1,1 +1,23 @@
-<p>login works!</p>
+<div class="text-center">
+    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+      style="width: 185px;" alt="logo">
+    <h4 class="mt-1 mb-5 pb-1">Week 5 exercise</h4>
+<div>
+
+  <form>
+    <p>Please login to your account</p>
+
+    <div class="form-outline mb-4">
+      <input type="email" [(ngModel)]="email" name="email">
+      <label class="form-label" for="email">Username</label>
+    </div>
+
+    <div class="form-outline mb-4">
+      <input type="password" [(ngModel)]="password" name="password">
+      <label class="form-label" for="password">Password</label>
+    </div>
+
+    <div class="text-center pt-1 mb-5 pb-1">
+      <button (click)="loginChck()">Log in</button>
+    </div>
+  </form>

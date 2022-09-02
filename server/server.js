@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
+app.use(express.urlencoded({extended:true}));
+app.use(express.json())
 
 app.use(express.static(__dirname + '/directory'));
 

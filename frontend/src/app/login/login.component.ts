@@ -11,6 +11,7 @@ const URL = 'http://localhost:3000';
 
 @Component({
   selector: 'app-login',
+  inputs: ['email', 'password'],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -32,10 +33,15 @@ export class LoginComponent implements OnInit {
     this.http.post(URL + '/auth', JSON.stringify(user), {
       headers: headers
     })
-    .subscribe(data=> {
+    .subscribe((data:any)=> {
       console.log(data);
       //this.router.navigateByUrl('/profile');
-      if (data == true){
+      if (data.valid == true){
+        sessionStorage.setItem('age', data.age);
+        sessionStorage.setItem('email', data.email);
+        sessionStorage.setItem('password', data.password);
+        sessionStorage.setItem('username', data.username);
+        sessionStorage.setItem('birthdate', data.birthdate);
         this.router.navigateByUrl('/profile');
       }else{
         alert("invalid login");

@@ -1,8 +1,14 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from '../login/login.component';
+import { Injectable } from '@angular/core';
+import { response } from 'express';
+import { HttpService } from '../http.service';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +17,7 @@ import { LoginComponent } from '../login/login.component';
 })
 export class ProfileComponent implements OnInit {
   
-  age = 0;
+  age = "";
   email = "";
   password = "";
   username = "";
@@ -21,13 +27,28 @@ export class ProfileComponent implements OnInit {
   isDone = false;
   isLoggedOut = false;
 
-  constructor(private router: Router, private http: HttpClientModule) { }
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router, private httpService: HttpService) { 
+    this.age = sessionStorage.getItem("age")!;
+    this.email = sessionStorage.getItem("email")!;
+    this.username = sessionStorage.getItem("username")!;
+    this.birthdate = sessionStorage.getItem("birthdate")!;
+  }
 
   ngOnInit(): void {
   }
 
   navbyURL(){
     this.router.navigateByUrl('/profile');
+  }
+
+  result(){
+    this.http.get(URL + '/auth')
+    .subscribe(data=> {
+      console.log(data);
+      if (data == true){
+        //this.email = data;
+      }
+    });
   }
 
   edit(){
@@ -44,7 +65,7 @@ export class ProfileComponent implements OnInit {
     sessionStorage.setItem('birthdate', this.birthdate);
    // sessionStorage.setItem('age', this.age);
 
-    //return userObj;
+    return userObj;
   }
 
   done(){
@@ -55,7 +76,7 @@ export class ProfileComponent implements OnInit {
       {'birthdate': sessionStorage.getItem(this.birthdate)},
       // {'age': sessionStorage.getItem(this.age)}
     ]
-    //return userObj;
+    return userObj;
   }
 
   logOut(){

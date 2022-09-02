@@ -24,9 +24,11 @@ app.post('/auth', function(req, res){
 
     for (let i=0; i<users.length; i++){
         if (req.body.email == users[i].email && req.body.password == users[i].password){
-            user.valid = true;
+            users[i].valid = true;
+            res.send(users[i]);
+            break;
         }
-    }   res.send(user.valid);
+    }   
 });
 
 app.listen(3000, ()=>{

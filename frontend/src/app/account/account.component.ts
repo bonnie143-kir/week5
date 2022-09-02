@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { email, title } from '../global-variables';
 
 @Component({
   selector: 'app-account',
@@ -8,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class AccountComponent implements OnInit {
 
+  email = email;
+  projTitle = title;
   constructor(private router: Router) { }
 
   ngOnInit(): void {

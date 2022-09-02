@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-profile',
@@ -8,18 +10,18 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
-  age = 0;
+  
+  age = "";
   email = "";
   password = "";
   username = "";
   birthdate = "";
-  isLoggedIn = false;
+  isLoggedIn = true;
   isEdit = false;
   isDone = false;
   isLoggedOut = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private http: HttpClientModule) { }
 
   ngOnInit(): void {
   }
@@ -40,19 +42,20 @@ export class ProfileComponent implements OnInit {
     sessionStorage.setItem('username', this.username);
     sessionStorage.setItem('email', this.email);
     sessionStorage.setItem('birthdate', this.birthdate);
-    //sessionStorage.setItem('age', this.age);
+    sessionStorage.setItem('age', this.age);
 
+    return userObj;
   }
 
   done(){
     this.isEdit = false;
-
     let userObj = [
       {'user': sessionStorage.getItem(this.username)},
       {'email': sessionStorage.getItem(this.email)},
       {'birthdate': sessionStorage.getItem(this.birthdate)},
       //{'age': sessionStorage.getItem(this.age)}
     ]
+    return userObj;
   }
 
   logOut(){

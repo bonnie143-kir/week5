@@ -18,29 +18,28 @@ const URL = 'http://localhost:3000';
 export class LoginComponent implements OnInit {
   email = ""
   password = ""
-  user = {'email': this.email, 'password': this.password};
-    
-
+  
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router, private httpService: HttpService) { }
 
   ngOnInit(): void {
   }
 
   loginChck(){
+    let user = {'email': this.email, 'password': this.password};
     const headers = new HttpHeaders()
     .set('AUthorization', 'my-auth-token')
     .set('Content-Type','application/json');
-    this.http.post(URL + '/auth', JSON.stringify(this.user), {
+    this.http.post(URL + '/auth', JSON.stringify(user), {
       headers: headers
     })
     .subscribe(data=> {
       console.log(data);
-      this.router.navigateByUrl('/account');
-      // if (data == true){ // chk this again
-      //   this.router.navigateByUrl('/account');
-      // }else{
-      //   alert("invalid login");
-      // }
+      //this.router.navigateByUrl('/profile');
+      if (data == true){
+        this.router.navigateByUrl('/profile');
+      }else{
+        alert("invalid login");
+      }
     });
   }
 

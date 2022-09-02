@@ -1,8 +1,10 @@
 <div *ngIf="isLoggedIn">
     <h1> This is your profile</h1>
-    {{email}}
-    {{birthdate}}
-    {{age}}
+    <p>The email address is {{email}}</p>
+    <p>Your date of birth is: {{birthdate}}</p>
+    <p>Your age is: {{age}}</p>
+    <p>Your username is: {{username}}</p> 
+</div>
 
     <button (click)="edit()">Edit Details</button>
     <div *ngIf="isEdit">
@@ -14,11 +16,6 @@
                 <label class="form-label" for="email">Email</label>
             </div>
       
-            <div class="form-outline mb-4">
-                <input type="password" [(ngModel)]="password" name="password">
-                <label class="form-label" for="password">Password</label>
-            </div>
-    
             <div class="form-outline mb-4">
                 <input type="date" [(ngModel)]="birthdate" name="birthdate">
                 <label class="form-label" for="birthdate">Birthdate</label>
@@ -37,7 +34,5 @@
             <button (click)="done()">Done</button>
         </form>
     </div>
-</div>
-
 
 <button (click)="logOut()">Log out</button>

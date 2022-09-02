@@ -5,15 +5,9 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 const cors = require('cors');
 app.use(cors());
+const { ok } = require('assert');
 
 app.use(express.static(__dirname + '/dist/frontend'));
-
-app.listen(3000, ()=>{
-    var d = new Date();
-    var n = d.getHours();
-    var m = d.getMinutes();
-    console.log('Server is listening at: ' + n + ':' +m);
-});
 
 app.post('/auth', function(req, res){
     let users = [
@@ -26,13 +20,22 @@ app.post('/auth', function(req, res){
     user.email = req.body.email;
     user.password = req.body.password;
     var incorrect = 1;
+    console.log(user);
 
     for (let i=0; i<users.length; i++){
         if (req.body.email == users[i].email && req.body.password == users[i].password){
             user.valid = true;
-            res.send(user);
-        }else {
-            res.send(incorrect);
+            sessionStorage.setItem('username', users[i].username);
+            sessionStorage.setItem('email', users[i].email);
+            sessionStorage.setItem('birthdate', users[i].birthdate);
+            sessionStorage.setItem('age', users[i].age);
         }
-    }   
+    }   res.send(user.valid);
+});
+
+app.listen(3000, ()=>{
+    var d = new Date();
+    var n = d.getHours();
+    var m = d.getMinutes();
+    console.log('Server is listening at: ' + n + ':' +m);
 });
